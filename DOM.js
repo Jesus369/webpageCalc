@@ -1,13 +1,13 @@
 // Defining our variables
-memory = "0"       // initialize memory variable
-Current = "0"      //    and value of Diplay("current" value)
-operation = 0;     // Records code for eg * / etc.
+memory = "0"       // for memory value
+Current = "0"      //  the starting value and current value that'll display
+operation = 0;     // stores operations (x, /, +, -, =)
 MAXLENGTH = 30;    // maximum number of digits before decimal
 
-// Define individual event handlers
-// addDigit - Adding a digit to the display
+// Define individual functions
+// AddDigit will add a number to the display
 
-function AddDigit(dig)          //ADD A DIGIT TO DISPLAY (keep as 'Current')
+function AddDigit(dig)          // Keeping what is displayed as current("0") and replacing it with a new number
  { if (Current.indexOf("!") == -1)  //if not already an error
     { if (    (eval(Current) == 0)
               && (Current.indexOf(".") == -1)
@@ -15,21 +15,21 @@ function AddDigit(dig)          //ADD A DIGIT TO DISPLAY (keep as 'Current')
            } else
            { Current = Current + dig;
            };
-      Current = Current.toLowerCase(); //FORCE LOWER CASE
+      Current = Current.toLowerCase(); // Force to lowercase!
     } else
-    { Current = "Hint! Press 'AC'";  //Help out, if error present.
+    { Current = "Hint! Press 'AC'";  // If error continues, notify the user for assistance
     };
    if (Current.indexOf("e0") != -1)
      { var epos = Current.indexOf("e");
        Current = Current.substring(0,epos+1) + Current.substring(epos+2);
      };
   if (Current.length > MAXLENGTH)
-     { Current = "Aargh! Too long"; //don't allow over MAXLENGTH digits before "." ???
+     { Current = "Too long"; // do not allow for the digits to exceed MAXLENGTH
      };
    document.Calculator.Display.value = Current;
  }
 
-function Dot()                  //PUT IN "." if appropriate.
+function Dot()                  // PUT IN "." if appropriate.
  {
   if ( Current.length == 0)     //no leading ".", use "0."
     { Current = "0.";
@@ -78,41 +78,40 @@ function Clear()                //CLEAR ENTRY
    document.Calculator.Display.value = Current;
  }
 
-function AllClear()             //Clear ALL entries!
+function AllClear()             // Clear ALL entries!
  { Current = "0";
-   Operation = 0;                //clear operation
-   Memory = "0";                  //clear memory
+   Operation = 0;                // clear operation
+   Memory = "0";                  // clear memory
    document.Calculator.Display.value = Current;
  }
 
-function Operate(op)            //STORE OPERATION e.g. + * / etc.
+function Operate(op)            // store operation symbols
  {
  if (Operation != 0) { Calculate(); }; //'Press "=" if pending operation!
- // note that design is not good for showing *intermediate* results.
 
-  if (op.indexOf("*") > -1) { Operation = 1; };       //codes for *
-  if (op.indexOf("/") > -1) { Operation = 2; };       // slash (divide)
-  if (op.indexOf("+") > -1) { Operation = 3; };       // sum
-  if (op.indexOf("-") > -1) { Operation = 4; };       // difference
+  if (op.indexOf("*") > -1) { Operation = 1; };       // multiplication
+  if (op.indexOf("/") > -1) { Operation = 2; };       // division
+  if (op.indexOf("+") > -1) { Operation = 3; };       // addition
+  if (op.indexOf("-") > -1) { Operation = 4; };       // subtraction
 
-  Memory = Current;                 //store value
+  Memory = Current;                 //storing the value entered/displayed
   // note how e.g. Current.value gives neither error nor value! ***
   Current = "";
   document.Calculator.Display.value = Current;
  }
 
-function Calculate()            //PERFORM CALCULATION (= button)
+function Calculate()            // Performing the calculation
  {
-  if (Operation == 1) { Current = eval(Memory) * eval(Current); };
-  if (Operation == 2)
+  if (Operation == 1) { Current = eval(Memory) * eval(Current); };  // perform multiplication
+  if (Operation == 2)                                               // perform division
     { if (eval(Current) != 0)
       { Current = eval(Memory) / eval(Current)
       } else
-      { Current = "Aargh! Divide by zero"; //don't allow over MAXLENGTH digits before "." ???
+      { Current = "No no no no no! Divide by zero"; //don't allow over MAXLENGTH digits before "."
       }
     };
-  if (Operation == 3) { Current = eval(Memory) + eval(Current); };
-  if (Operation == 4) { Current = eval(Memory) - eval(Current); };
+  if (Operation == 3) { Current = eval(Memory) + eval(Current); };  // perform addition
+  if (Operation == 4) { Current = eval(Memory) - eval(Current); };  // perform subtraction
   Operation = 0;                //clear operation
   Memory = "0";                  //clear memory
   Current = Current + "";       //FORCE A STRING!
