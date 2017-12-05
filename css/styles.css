@@ -1,0 +1,31 @@
+body {
+  background-color: #f44949;
+}
+
+.textBox {
+  height: 6em;
+  background-color: #white;
+}
+
+.wrapItAll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  font-size: 2em;
+}
+
+td {
+  background-color: #fc5555;
+  color: white;
+}
+
+.buttonDesigns {
+  font-size: 1em;
+  background-color: white;
+  border-radius: 60px;
+  color: black;
+  padding: 20px;
+  height: 2.5em;
+  width: 2.6em;
+}

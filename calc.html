@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+
+<body>
+  <FORM name="Calculator" class="wrapItAll">
+    <table class="calcBorder">
+      <tr> <!--- TOP PANEL --->
+        <td colspan="2">Calculator<br>
+          <!-- Maxlength for the textbox is 40 characters with a width of 20px and named "Display" -->
+          <input type="text" maxlength="40" size="100" name="Display" class="textBox">
+        </td>
+      </tr> <!--- END TOP PANEL --->
+
+      <tr>
+        <td> <!--- LEFT PANEL --->
+          <table>
+            <tr>
+   <!--a button is created which on it will have the value "7" and we assign the buttons a name-->
+              <td><input type="button" name="seven" value="7" OnClick="AddDigit('7')" class="buttonDesigns"></td>
+              <td><input type="button" name="eight" value="8" OnClick="AddDigit('8')" class="buttonDesigns"></td>
+              <td><input type="button" name="nine"  value="9" OnClick="AddDigit('9')" class="buttonDesigns"></td>
+            </tr>
+            <tr>
+              <td><input type="button" name="four" value="4"  OnClick="AddDigit('4')" class="buttonDesigns"></td>
+              <td><input type="button" name="five" value="5"  OnClick="AddDigit('5')" class="buttonDesigns"></td>
+              <td><input type="button" name="six"  value="6"  OnClick="AddDigit('6')" class="buttonDesigns"></td>
+            </tr>
+            <tr>
+              <td><input type="button" name="one"  value="1"  OnClick="AddDigit('1')" class="buttonDesigns"></td>
+              <td><input type="button" name="two"  value="2"  OnClick="AddDigit('2')" class="buttonDesigns"></td>
+              <td><input type="button" name="nine" value="3"  OnClick="AddDigit('3')" class="buttonDesigns"></td>
+            </tr>
+            <tr>
+              <td colspan="4"><input type="button" name="zero" value="0"  OnClick="AddDigit('0')" class="buttonDesigns"></td>
+            </tr>
+
+          </table>
+        </td> <!--- END LEFT PANEL --->
+
+        <td> <!--- RIGHT PANEL --->
+          <table>
+            <tr>
+              <td><input type="button" name="sum" value="+"  OnClick="Operate('+')" class="buttonDesigns"></td>
+              <td><input type="button" name="sub" value="-"  OnClick="Operate('-')" class="buttonDesigns"></td>
+              <td><input type="button" name="mul" value="*"  OnClick="Operate('*')" class="buttonDesigns"></td>
+              <td><input type="button" name="div" value="/"  OnClick="Operate('/')" class="buttonDesigns"></td>
+            </tr>
+            <tr>
+              <td><input type="button" name="equal"    value="="  OnClick="Calculate()" class="buttonDesigns"></td>
+              <td><input type="button" name="clear"    value="C"  OnClick="Clear()" class="buttonDesigns"></td>
+              <td><input type="button" name="clearAll" value="CA" OnClick="AllClear()" class="buttonDesigns"></td>
+              <td><input type="button" name="exp"      value="EXP"  OnClick="DoExponent()" class="buttonDesigns"></td>
+            </tr>
+          </table>
+        </td> <!--- END RIGHT PANEL --->
+      </tr>
+    </table>
+
+
+
+
+
+
+</body>
+
+<script type="text/javascript" src="DOM.js"></script>
+
+</html>
